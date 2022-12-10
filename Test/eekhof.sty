@@ -1,0 +1,156 @@
+%%% Preamble (See https://www.overleaf.com/learn/latex/Writing_your_own_package): %%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{eekhof}[2022/12/09 Eekhof Package]
+
+\RequirePackage{etoolbox} % For boolean definitions and conditionals, used in options and config
+\newbool{domaketitle}
+
+%%% Config: $$$
+\newcommand{\userfirstname}{Lucas}
+\newcommand{\usersurname}{Eekhof}
+\newcommand{\usernumber}{4110592}
+\booltrue{domaketitle}
+
+%%% Package imports: %%%
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[german]{babel} % For umlauts etc.
+\RequirePackage{ftnxtra} % For footnotes in captions
+\RequirePackage[table]{xcolor} % For colored formular names etc.
+\RequirePackage{mathtools} % For underbrace stretching
+\RequirePackage{physics} % For dv pdv
+\RequirePackage{braket} % For Bra-Ket notation
+\RequirePackage[T1]{fontenc} % For fonts in western European encoding (see https://texwelt.de/fragen/5537/was-macht-eigentlich-usepackaget1fontenc)
+\RequirePackage{siunitx} % For \si, \num and \SI
+\RequirePackage{tikz-cd} % For diagrams
+\RequirePackage{graphicx} % For including images
+\RequirePackage{amssymb} % For special math symbols
+\RequirePackage{amsmath} % For equation typesetting
+\RequirePackage{multicol} % For cheatsheet columns and for tables from tablesgenerator
+\RequirePackage{multirow} % For tables from tablesgenerator
+\RequirePackage{booktabs} % For tables from tablesgenerator
+\RequirePackage{placeins} % For FloatBarrier
+\RequirePackage[parfill]{parskip} % To prevent indents after linebreaks and figures
+\usepackage{enumitem} % For custom enumeration symbols
+\RequirePackage{hyperref} % For hyperlinks, functioning table of contents, etc.
+
+%%% Further setup: %%%
+\sisetup{round-mode = off, round-precision = 3, locale = DE, scientific-notation = false, separate-uncertainty = true, per-mode=fraction}
+\graphicspath{{assets/}}
+\title{\jobname}
+\author{\userfirstname{} \usersurname}
+\date{}
+
+%%%%% Import-option specific-options: %%%%%
+
+\newbool{normalbool}
+\booltrue{normalbool}
+\newbool{cheatsheetbool}
+\boolfalse{cheatsheetbool}
+\newbool{graybool}
+\boolfalse{graybool}
+
+\DeclareOption{cheatsheet}{\booltrue{cheatsheetbool}\boolfalse{normalbool}}
+\DeclareOption{gray}{\booltrue{graybool}\boolfalse{normalbool}}
+
+\ProcessOptions\relax % ATTENTION: Alway has to be called after declareoptions
+
+%%% Only for non-Cheatsheets (But alsoleft as default):
+% Um genaue Seitenzahlen bei Zitation in PDF auszublenden, aber damit sie zum nachlesen im TEX-Dokument weiter verbleiben koennen (Quelle für Umdefinition: https://tex.stackexchange.com/questions/537678/how-to-renewcommand-with-2-arguments):
+\ifbool{normalbool}{
+	\ifbool{domaketitle}{\AtBeginDocument{\maketitle}}
+	
+	\let\oldcite\cite
+	\renewcommand{\cite}[2][]{\oldcite{#2}}
+	
+	\patchcmd{\thebibliography}{\section*{\refname}}{}{}{} % Prevent numbering of bibliography
+}
+{}
+
+
+%%% Only for Cheatsheets: %%%
+\ifbool{cheatsheetbool}{
+	\usepackage[landscape, margin=0.5cm, rmargin=0cm]{geometry} % For horizontal page and small margins
+	\usepackage[compact]{titlesec} %Tighter space betwen section headers, see https://robjhyndman.com/hyndsight/squeezing-space-with-latex/
+	% Set arial font (Klarer, aber etwas kleiner als oben):
+	%\renewcommand{\familydefault}{\sfdefault}
+	\usepackage[nosf]{kpfonts}
+	\usepackage[t1]{sourcesanspro} % ATTENTION: Causes errors related to mathaccents
+	%remove spacing between headers
+	\titlespacing*{\section}{0pt}{0pt}{0pt}
+	\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+	
+	\newcommand{\heading}[2]{\text{\Large #1}\\- Dozent #2 - (\usersurname , \usernumber)} % Define standard header with lecture name and professor name
+	\newcommand{\fm}[2]{\textcolor{blue}{#1:}\\ \textit{#2}\\} %Define "formular" command
+	\newcommand{\s}[1]{\section*{\textcolor{red}{#1}}} %Define "section" command
+	\renewcommand{\ss}[1]{\subsection*{\textcolor{orange}{#1}}} %Define "subsection" command, overwriting \ss for "Scharfes S"
+	
+	\AtBeginDocument{\begin{multicols*}{4}\begin{flushleft}}
+	\AtEndDocument{\end{flushleft}\end{multicols*}}
+}
+{}
+
+
+%%% Gray mode (Zum leichteren Abpausen von cheatsheets etc.): %%%
+\ifbool{graybool}{
+	\usepackage{xcolor}
+	\color{gray}
+}
+{}
+
+
+%%% Only for beamer: %%%
+%TODO
+
+
+%%%%% Custom commands: %%%%%
+% More compact german quote command:
+\renewcommand{\lq}{\glqq} % ATTENTION: Overwrites \lq, which is for non-german single quotes
+\renewcommand{\rq}{\grqq} % ATTENTION: Overwrites \rq, which is for non-german single quotes
+% Easier integration variable (e. g. \text{d}x -> \d x):
+\renewcommand{\d}{\text{d}} % ATTENTION: Overwrites \d , not clear what it normally does
+% Functions with braces:
+\renewcommand{\sin}[2][]{\operatorname{sin}^{#1}\left(#2\right)}
+\renewcommand{\cos}[2][]{\operatorname{cos}^{#1}\left(#2\right)}
+\renewcommand{\ln}[1]{\operatorname{ln}\left(#1\right)}
+\renewcommand{\log}[2][]{\operatorname{log}_{#1}\left(#2\right)}
+\renewcommand{\lg}[2][]{\operatorname{lg}_{#1}\left(#2\right)}
+\renewcommand{\exp}[1]{\operatorname{exp}\left(#1\right)}
+\newcommand{\ld}[1]{\operatorname{ld}\left(#1\right)} % \ld does not normally exist
+
+\newcommand{\const}{\text{const.}} % For compact const.
+% Prettier greek letters:
+\let\oldphi\phi \let\phi\varphi \let\varphi\oldphi
+\let\oldepsilon\epsilon \let\epsilon\varepsilon \let\varepsilon\oldepsilon
+
+\newcommand{\f}[2]{#1_{\left(#2\right)}} % Command for function with argument in index
+\newcommand{\bracfrac}[2]{\left(\frac{#1}{#2}\right)}
+
+% Define more compact commands for left and right braces:
+\renewcommand{\l}{\left} % ATTENTION! Overwrites command \l for small letter L with strikethrough (e. g. polish letter)
+\renewcommand{\r}{\right} % ATTENTION! Overwrites ring command \r , that oversets a ring oder a letter (Such as over the A in in Angstroem)
+
+% Nabla vector redefinition:
+\let\nablanovec\nabla % Add definition for nabla without vector so that renewing of nabla with vector works
+\renewcommand{\nabla}{{\vec{\nablanovec}}} % Add vector arrow to every nabla
+
+% Enumerate symbols with brackets instead of dots:
+\setenumerate[1]{label={\arabic*)}}
+\setenumerate[2]{label={\alph*)}}
+\setenumerate[3]{label={\roman*)}}
+\setenumerate[4]{label={\Alph*)}}
+
+% Compact includegraphic command definition:
+\newcommand{\graphic}[2]{\begin{figure}[ht!]
+	\centering
+	\includegraphics[width = \linewidth]{#1}
+	\caption{#2}
+	\label{fig:#1}
+\end{figure}
+\FloatBarrier}
+
+
+%TODO :
+% Schoenere Wurzel (Mit Haken hintendran) einfuegen (Siehe https://tex.stackexchange.com/questions/29834/closed-square-root-symbol)
+% In zweiter Aufzaehlungsebene Symbol von "(a)" zu "a)" ändern (geht wahrscheinlich nur mit Package "enumitem")
+% Vernuenftige Bibtex-Zitationsweise einfügen
+% Leichtere Schreibweise für Vektoren einfuegen, damit nicht immer eine Matrix geschrieben werden muss
