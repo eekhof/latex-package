@@ -17,10 +17,12 @@
 \RequirePackage{ftnxtra} % For footnotes in captions
 \RequirePackage[table]{xcolor} % For colored formular names etc.
 \RequirePackage{mathtools} % For underbrace stretching
-\RequirePackage{physics} % For dv pdv
+\usepackage{siunitx} % For \si, \num and \SI
+\let\svqty\qty % To avoid conflict with \qty from \siunitx and \physics , see https://tex.stackexchange.com/questions/628183/how-to-avoid-qty-conflict-with-physics-and-siunitx
+\usepackage{physics} % For dv pdv
+\let\qty\svqty % To avoid conflict with \qty from \siunitx and \physics , see https://tex.stackexchange.com/questions/628183/how-to-avoid-qty-conflict-with-physics-and-siunitx
 \RequirePackage{braket} % For Bra-Ket notation
 \RequirePackage[T1]{fontenc} % For fonts in western European encoding (see https://texwelt.de/fragen/5537/was-macht-eigentlich-usepackaget1fontenc)
-\RequirePackage{siunitx} % For \si, \num and \SI
 \RequirePackage{tikz-cd} % For diagrams
 \RequirePackage{graphicx} % For including images
 \RequirePackage{amssymb} % For special math symbols
@@ -34,7 +36,7 @@
 \RequirePackage{hyperref} % For hyperlinks, functioning table of contents, etc.
 
 %%% Further setup: %%%
-\sisetup{round-mode = off, round-precision = 3, locale = DE, scientific-notation = false, separate-uncertainty = true, per-mode=fraction}
+\sisetup{round-mode = places, round-precision = 3, locale = DE, scientific-notation = false, separate-uncertainty = true, per-mode=fraction}
 \graphicspath{{assets/}}
 \title{\jobname}
 \author{\userfirstname{} \usersurname}

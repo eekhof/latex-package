@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.14)  10 DEC 2022 23:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.11.14)  10 DEC 2022 23:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -165,24 +165,12 @@ LaTeX Info: Redefining \] on input line 2939.
 \l_MT_below_shortintertext_sep=\dimen159
 \xmathstrut@box=\box54
 \xmathstrut@dim=\dimen160
-) (/usr/share/texmf-dist/tex/latex/physics/physics.sty
-Package: physics 
- (/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2022-04-10 L3 programming layer (loader) 
- (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2022-04-14 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count279
-\l__pdf_internal_box=\box55
-))
-Package: xparse 2022-01-12 L3 Experimental document command parser
-)) (/usr/share/texmf-dist/tex/latex/braket/braket.sty) (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 ) (/usr/share/texmf-dist/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2022-04-04 v3.0.50 A comprehensive (SI) units package
 \l__siunitx_angle_tmp_dim=\dimen161
-\l__siunitx_angle_marker_box=\box56
-\l__siunitx_angle_unit_box=\box57
-\l__siunitx_compound_count_int=\count280
+\l__siunitx_angle_marker_box=\box55
+\l__siunitx_angle_unit_box=\box56
+\l__siunitx_compound_count_int=\count279
  (/usr/share/texmf-dist/tex/latex/translations/translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
  (/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
@@ -198,30 +186,37 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 ))
-\l__siunitx_number_exponent_fixed_int=\count281
-\l__siunitx_number_min_decimal_int=\count282
-\l__siunitx_number_min_integer_int=\count283
-\l__siunitx_number_round_precision_int=\count284
-\l__siunitx_number_group_minimum_int=\count285
-\l__siunitx_table_tmp_box=\box58
+\l__siunitx_number_exponent_fixed_int=\count280
+\l__siunitx_number_min_decimal_int=\count281
+\l__siunitx_number_min_integer_int=\count282
+\l__siunitx_number_round_precision_int=\count283
+\l__siunitx_number_group_minimum_int=\count284
+\l__siunitx_table_tmp_box=\box57
 \l__siunitx_table_tmp_dim=\dimen162
 \l__siunitx_table_column_width_dim=\dimen163
-\l__siunitx_table_integer_box=\box59
-\l__siunitx_table_decimal_box=\box60
-\l__siunitx_table_before_box=\box61
-\l__siunitx_table_after_box=\box62
+\l__siunitx_table_integer_box=\box58
+\l__siunitx_table_decimal_box=\box59
+\l__siunitx_table_before_box=\box60
+\l__siunitx_table_after_box=\box61
 \l__siunitx_table_before_dim=\dimen164
 \l__siunitx_table_carry_dim=\dimen165
-\l__siunitx_unit_tmp_int=\count286
-\l__siunitx_unit_position_int=\count287
-\l__siunitx_unit_total_int=\count288
- (/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+\l__siunitx_unit_tmp_int=\count285
+\l__siunitx_unit_position_int=\count286
+\l__siunitx_unit_total_int=\count287
+ (/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2022-04-10 L3 programming layer (loader) 
+ (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-04-14 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count288
+\l__pdf_internal_box=\box62
+))
 Package: l3keys2e 2022-01-12 LaTeX2e option processing using LaTeX3 keys
-)
-
-Package siunitx Warning: Detected the "physics" package:
-(siunitx)                Omitting definition of \qty.
-
+)) (/usr/share/texmf-dist/tex/latex/physics/physics.sty
+Package: physics 
+ (/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2022-01-12 L3 Experimental document command parser
+)) (/usr/share/texmf-dist/tex/latex/braket/braket.sty) (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 ) (/usr/share/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
 Package: tikz-cd 2021/05/04 v1.0 Commutative diagrams with TikZ
  (/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
@@ -632,19 +627,6 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 \Hy@SectionHShift=\skip64
 )
 
-./eekhof.sty:37: LaTeX3 Error: Key 'siunitx/round-mode' accepts only a fixed set of choices.
-
-For immediate help type H <return>.
- ...                                              
-                                                  
-l.37 ...ate-uncertainty = true, per-mode=fraction}
-                                                  
-
-The key 'siunitx/round-mode' only accepts predefined values, and 'off' is not
-one of these.
-
-
-
 Package siunitx Info: Option "scientific-notation = false" has been deprecated
 (siunitx)             in this release.
 (siunitx)             
@@ -712,6 +694,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 5.
 LaTeX Info: Redefining \pageref on input line 5.
 LaTeX Info: Redefining \nameref on input line 5.
+ (./Test.out) (./Test.out)
 \@outlinefile=\write4
 \openout4 = `Test.out'.
 
@@ -734,39 +717,23 @@ Package pdftex.def Info: assets//download.jpg  used on input line 38.
 (pdftex.def)             Requested size: 345.0pt x 214.26625pt.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Reference `fig:download' on page 2 undefined on input line 39.
-
-[2 <./assets//download.jpg>] (./Test.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `Test.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Test.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./assets//download.jpg>] (./Test.aux)
+Package rerunfilecheck Info: File `Test.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27736 strings out of 478238
- 558114 string characters out of 5850455
- 816673 words of memory out of 5000000
- 45521 multiletter control sequences out of 15000+600000
- 480208 words of font info for 60 fonts, out of 8000000 for 9000
+ 27737 strings out of 478238
+ 558067 string characters out of 5850455
+ 816656 words of memory out of 5000000
+ 45519 multiletter control sequences out of 15000+600000
+ 479432 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  129i,7n,132p,606b,765s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on Test.pdf (2 pages, 167368 bytes).
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
+Output written on Test.pdf (2 pages, 155770 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 109 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  12 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
