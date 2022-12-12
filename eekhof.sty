@@ -1,6 +1,6 @@
 %%% Preamble (See https://www.overleaf.com/learn/latex/Writing_your_own_package): %%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eekhof}[2022/12/09 Eekhof Package]
+\ProvidesPackage{eekhof}[2022/12/11 Eekhof Package]
 
 \RequirePackage{etoolbox} % For boolean definitions and conditionals, used in options and config
 \newbool{domaketitle}
@@ -104,6 +104,22 @@
 %TODO
 
 
+%%% Preparation for custom brackets command (See): $$$
+\DeclareDocumentCommand\trigbraces{ m o d() }
+{
+	\IfNoValueTF{#3}
+	{#1 \IfNoValueTF{#2}{}{[#2]}}
+	{#1 \IfNoValueTF{#2}{}{^{#2}} \argopen(#3\argclose)}
+}
+
+% Trig function and operator redefinitions
+\DeclareMathOperator{\ld}{ld}
+\DeclareDocumentCommand\ld{}{\trigbraces{\ld}}
+
+
+
+
+
 %%%%% Custom commands: %%%%%
 % More compact german quote command:
 \renewcommand{\lq}{\glqq} % ATTENTION: Overwrites \lq, which is for non-german single quotes
@@ -124,7 +140,7 @@
 \let\oldphi\phi \let\phi\varphi \let\varphi\oldphi
 \let\oldepsilon\epsilon \let\epsilon\varepsilon \let\varepsilon\oldepsilon
 
-\newcommand{\f}[2]{#1_{\left(#2\right)}} % Command for function with argument in index
+\newcommand{\f}[2]{{#1}_{\left(#2\right)}} % Command for function with argument in index
 \newcommand{\bracfrac}[2]{\left(\frac{#1}{#2}\right)}
 
 % Define more compact commands for left and right braces:
@@ -152,6 +168,8 @@
 
 
 %TODO :
+% MAthekommandos mit Braces loeschen, sie sind schon alle aus dem Physics-package vorhanden durch \sin() "automatic bracing" mit runden klammern - Ausser \ld, der muss noch mit automatic bracing hinzugefuegt werden
+% \qty befehl führt immer noch zu Problemen auf Windows und Overleaf
 % Schoenere Wurzel (Mit Haken hintendran) einfuegen (Siehe https://tex.stackexchange.com/questions/29834/closed-square-root-symbol)
 % In zweiter Aufzaehlungsebene Symbol von "(a)" zu "a)" ändern (geht wahrscheinlich nur mit Package "enumitem")
 % Vernuenftige Bibtex-Zitationsweise einfügen
