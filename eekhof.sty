@@ -3,6 +3,7 @@
 \ProvidesPackage{eekhof}[2022/12/11 Eekhof Package]
 
 \RequirePackage{etoolbox} % For boolean definitions and conditionals, used in options and config
+\RequirePackage{xparse} % For bracket definitions in \ld
 \newbool{domaketitle}
 
 %%% Config: $$$
@@ -104,20 +105,15 @@
 %TODO
 
 
-%%% Preparation for custom brackets command (See): $$$
+%%% Math operators with self adjusting braces command \trigbraces (stolen from physics-package): %%%
 \DeclareDocumentCommand\trigbraces{ m o d() }
-{
-	\IfNoValueTF{#3}
+{\IfNoValueTF{#3}
 	{#1 \IfNoValueTF{#2}{}{[#2]}}
-	{#1 \IfNoValueTF{#2}{}{^{#2}} \argopen(#3\argclose)}
-}
+	{#1 \IfNoValueTF{#2}{}{^{#2}} \argopen(#3\argclose)}}
 
-% Trig function and operator redefinitions
-\DeclareMathOperator{\ld}{ld}
-\DeclareDocumentCommand\ld{}{\trigbraces{\ld}}
-
-
-
+% Define \ld command:
+\DeclareMathOperator{\logdual}{ld} % \ld does not normally exist
+\DeclareDocumentCommand\ld{}{\trigbraces{\logdual}}
 
 
 %%%%% Custom commands: %%%%%
@@ -126,14 +122,6 @@
 \renewcommand{\rq}{\grqq} % ATTENTION: Overwrites \rq, which is for non-german single quotes
 % Easier integration variable (e. g. \text{d}x -> \d x):
 \renewcommand{\d}{\text{d}} % ATTENTION: Overwrites \d , not clear what it normally does
-% Functions with braces:
-\renewcommand{\sin}[2][]{\operatorname{sin}^{#1}\left(#2\right)}
-\renewcommand{\cos}[2][]{\operatorname{cos}^{#1}\left(#2\right)}
-\renewcommand{\ln}[1]{\operatorname{ln}\left(#1\right)}
-\renewcommand{\log}[2][]{\operatorname{log}_{#1}\left(#2\right)}
-\renewcommand{\lg}[2][]{\operatorname{lg}_{#1}\left(#2\right)}
-\renewcommand{\exp}[1]{\operatorname{exp}\left(#1\right)}
-\newcommand{\ld}[1]{\operatorname{ld}\left(#1\right)} % \ld does not normally exist
 
 \newcommand{\const}{\text{const.}} % For compact const.
 % Prettier greek letters:
@@ -168,9 +156,8 @@
 
 
 %TODO :
-% MAthekommandos mit Braces loeschen, sie sind schon alle aus dem Physics-package vorhanden durch \sin() "automatic bracing" mit runden klammern - Ausser \ld, der muss noch mit automatic bracing hinzugefuegt werden
+% Bei Mathekommandos fehlt noch Basis für Logarithmus durch [-2] o. ae.
 % \qty befehl führt immer noch zu Problemen auf Windows und Overleaf
 % Schoenere Wurzel (Mit Haken hintendran) einfuegen (Siehe https://tex.stackexchange.com/questions/29834/closed-square-root-symbol)
-% In zweiter Aufzaehlungsebene Symbol von "(a)" zu "a)" ändern (geht wahrscheinlich nur mit Package "enumitem")
 % Vernuenftige Bibtex-Zitationsweise einfügen
 % Leichtere Schreibweise für Vektoren einfuegen, damit nicht immer eine Matrix geschrieben werden muss
