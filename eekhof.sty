@@ -1,6 +1,6 @@
 %%% Preamble (See https://www.overleaf.com/learn/latex/Writing_your_own_package): %%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eekhof}[2022/12/11 Eekhof Package]
+\ProvidesPackage{eekhof}[2023/01/03 Eekhof Package]
 
 \RequirePackage{etoolbox} % For boolean definitions and conditionals, used in options and config
 \RequirePackage{xparse} % For bracket definitions in \ld
@@ -14,7 +14,7 @@
 
 %%% Package imports: %%%
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[german]{babel} % For umlauts etc.
+\RequirePackage[english, german]{babel} % For umlauts etc.
 \RequirePackage{ftnxtra} % For footnotes in captions
 \RequirePackage[table]{xcolor} % For colored formular names etc.
 \RequirePackage{mathtools} % For underbrace stretching
@@ -23,9 +23,11 @@
 \usepackage{physics} % For dv pdv
 \let\qty\svqty % To avoid conflict with \qty from \siunitx and \physics , see https://tex.stackexchange.com/questions/628183/how-to-avoid-qty-conflict-with-physics-and-siunitx
 \RequirePackage{braket} % For Bra-Ket notation
-\RequirePackage[T1]{fontenc} % For fonts in western European encoding (see https://texwelt.de/fragen/5537/was-macht-eigentlich-usepackaget1fontenc)
+\RequirePackage[T1]{fontenc} % For fonts in western European encoding (see https://texwelt.de/fragen/5537/was-macht-eigentlich-usepackaget1fontenc) ATTENTION: May cause blurry and unsharp letters (see https://tex.stackexchange.com/questions/172079/t1-encoding-causing-bad-pdf-quality), to counteract this install package 'cm-super', or do the following lmodern import, see below:
+\usepackage{lmodern} % To counteract blurry font, see above
 \RequirePackage{tikz-cd} % For diagrams
 \RequirePackage{graphicx} % For including images
+\RequirePackage{biblatex} % For bibliography
 \RequirePackage{amssymb} % For special math symbols
 \RequirePackage{amsmath} % For equation typesetting
 \RequirePackage{multicol} % For cheatsheet columns and for tables from tablesgenerator
@@ -62,6 +64,7 @@
 \ifbool{normalbool}{
 	\ifbool{domaketitle}{\AtBeginDocument{\maketitle}}
 	
+	% Um genaue Seitenzahlen bei Zitationn in PDF auszublenden, aber damit sie zum nachlesen im TEX-Dokument weiter verbleiben koennen (Quelle fuer Umdefinition: https://tex.stackexchange.com/questions/537678/how-to-renewcommand-with-2-arguments):
 	\let\oldcite\cite
 	\renewcommand{\cite}[2][]{\oldcite{#2}}
 	
@@ -154,10 +157,32 @@
 \end{figure}
 \FloatBarrier}
 
+% Custom SI package stuff:
+\DeclareSIUnit\clight{\text{\ensuremath{c}}}
+\DeclareSIUnit\elementarycharge{e} % Without this, there is a warning that says that elementarycharge unit is deprecated
+
+% Create gitignore if git does exist, but gitignore does not yet exist (For file check see https://tex.stackexchange.com/questions/98203/can-i-test-if-a-file-exists or https://latex.org/forum/viewtopic.php?p=5047#p5047 and for file creation see https://latex.org/forum/viewtopic.php?t=5177)
+\AfterPreamble{\IfFileExists{.git}{\IfFileExists{.gitignore}{}{
+	\newwrite\mywrite
+	\edef\mywritename{.gitignore}
+	\immediate\openout\mywrite\mywritename
+	\immediate\write\mywrite{*.aux^^J*.fdb_latexmk^^J*.fls^^J*.log^^J*.out^^J*.synctex.gz^^J*.toc^^J*.bbl^^J*.bcf^^J*.run.xml}
+}}{}}
+
+
+% CWL:
+% For proper Autocompletion write .cwl file for package according to [StackExchangeCWL](https://tex.stackexchange.com/questions/534403/how-to-format-custom-cwl-for-texstudio-completion)
+% See [CWLInformation](https://htmlpreview.github.io/?https://github.com/texstudio-org/texstudio/master/utilities/manual/usermanual_en.html#description-of-the-cwl-format) for format specification
+% See [CWLExampleSiUnitx](https://github.com/texstudio-org/texstudio/blob/master/completion/siunitx.cwl) for example file
+% To enable intellisense autocompletion/suggestion for installed packages and homemade packages in LatexWorkshop for VSCode, follow guide on [LatexWorkshopWiki](https://github.com/James-Yu/LaTeX-Workshop/wiki/Intellisense#commands-starting-with-)
+
 
 %TODO :
-% Bei Mathekommandos fehlt noch Basis für Logarithmus durch [-2] o. ae.
+% Documentclass mit etoolbox-hook automatisch auf article/beamer setzen, je nach Einstellung beim Import des packages?
+% Bei Mathekommandos fehlt noch Basis fuer Logarithmus durch [-2] o. ae.
+% Eventuell \usepackage{listings} fuer python code einfuegen (Siehe Stellar Cookbook Rport)?
 % \qty befehl führt immer noch zu Problemen auf Windows und Overleaf
 % Schoenere Wurzel (Mit Haken hintendran) einfuegen (Siehe https://tex.stackexchange.com/questions/29834/closed-square-root-symbol)
 % Vernuenftige Bibtex-Zitationsweise einfügen
 % Leichtere Schreibweise für Vektoren einfuegen, damit nicht immer eine Matrix geschrieben werden muss
+% Conditional CWL hilfen fuer Kommandos einfuegen, die zum Beispiel nur in Cheatsheets auftreten (z. B. \ss etc.), siehe dazu uebergelassenes Beispiel mit Conditional in eekhof.CWL
