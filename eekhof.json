@@ -1,0 +1,45 @@
+{
+  "includes": [
+    "xcolor",
+    "mathtools",
+    "siunitx",
+    "physics",
+    "braket",
+    "tikz-cd",
+    "amssymb",
+    "amsmath",
+    "hyperref",
+    "xspace"
+  ],
+  "cmds": {
+    "lq": {},
+    "rq": {},
+    "d": {
+      "detail": "𝑑",
+      "documentation": "MATHEMATICAL ITALIC SMALL D"
+    },
+    "const": {},
+    "f{}{}": {
+      "snippet": "f{${1:functionname}}{${2:argument}}"
+    },
+    "bracfrac{}{}": {
+      "snippet": "bracfrac{${1:numerator}}{${2:denominator}}"
+    },
+    "l": {
+      "detail": "𝑙",
+      "documentation": "MATHEMATICAL ITALIC SMALL L"
+    },
+    "r": {
+      "detail": "𝑟",
+      "documentation": "MATHEMATICAL ITALIC SMALL R"
+    },
+    "nablanovec": {},
+    "graphic{}{}": {
+      "snippet": "graphic{${1:filename}}{${2:caption}}"
+    },
+    "clight": {},
+    "elementarycharge": {}
+  },
+  "envs": {},
+  "options": []
+}
