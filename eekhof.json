@@ -34,8 +34,8 @@
       "documentation": "MATHEMATICAL ITALIC SMALL R"
     },
     "nablanovec": {},
-    "graphic{}{}": {
-      "snippet": "graphic{${1:filename}}{${2:caption}}"
+    "incfig{}{}": {
+      "snippet": "incfig{${1:filename}}{${2:caption}}"
     },
     "clight": {},
     "elementarycharge": {}

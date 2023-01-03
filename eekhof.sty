@@ -64,7 +64,7 @@
 \ifbool{normalbool}{
 	\ifbool{domaketitle}{\AtBeginDocument{\maketitle}}
 	
-	% Um genaue Seitenzahlen bei Zitationn in PDF auszublenden, aber damit sie zum nachlesen im TEX-Dokument weiter verbleiben koennen (Quelle fuer Umdefinition: https://tex.stackexchange.com/questions/537678/how-to-renewcommand-with-2-arguments):
+	% Um genaue Seitenzahlen bei Zitationen in PDF auszublenden, aber damit sie zum nachlesen im TEX-Dokument weiter verbleiben koennen (Quelle fuer Umdefinition: https://tex.stackexchange.com/questions/537678/how-to-renewcommand-with-2-arguments):
 	\let\oldcite\cite
 	\renewcommand{\cite}[2][]{\oldcite{#2}}
 	
@@ -149,7 +149,7 @@
 \setenumerate[4]{label={\Alph*)}}
 
 % Compact includegraphic command definition:
-\newcommand{\graphic}[2]{\begin{figure}[ht!]
+\newcommand{\incfig}[2]{\begin{figure}[ht!]
 	\centering
 	\includegraphics[width = \linewidth]{#1}
 	\caption{#2}
@@ -162,19 +162,26 @@
 \DeclareSIUnit\elementarycharge{e} % Without this, there is a warning that says that elementarycharge unit is deprecated
 
 % Create gitignore if git does exist, but gitignore does not yet exist (For file check see https://tex.stackexchange.com/questions/98203/can-i-test-if-a-file-exists or https://latex.org/forum/viewtopic.php?p=5047#p5047 and for file creation see https://latex.org/forum/viewtopic.php?t=5177)
-\AfterPreamble{\IfFileExists{.git}{\IfFileExists{.gitignore}{}{
-	\newwrite\mywrite
-	\edef\mywritename{.gitignore}
-	\immediate\openout\mywrite\mywritename
-	\immediate\write\mywrite{*.aux^^J*.fdb_latexmk^^J*.fls^^J*.log^^J*.out^^J*.synctex.gz^^J*.toc^^J*.bbl^^J*.bcf^^J*.run.xml}
+\AtBeginDocument{\IfFileExists{.git/HEAD}{\IfFileExists{.gitignore}{}{
+	\newwrite\outputstream
+	\immediate\openout\outputstream={GIT.gitignore}
+	\immediate\write\outputstream{*.aux^^J*.fdb_latexmk^^J*.fls^^J*.log^^J*.out^^J*.synctex.gz^^J*.toc^^J*.bbl^^J*.bcf^^J*.run.xml}
+	\immediate\closeout\outputstream
 }}{}}
 
 
-% CWL:
-% For proper Autocompletion write .cwl file for package according to [StackExchangeCWL](https://tex.stackexchange.com/questions/534403/how-to-format-custom-cwl-for-texstudio-completion)
-% See [CWLInformation](https://htmlpreview.github.io/?https://github.com/texstudio-org/texstudio/master/utilities/manual/usermanual_en.html#description-of-the-cwl-format) for format specification
-% See [CWLExampleSiUnitx](https://github.com/texstudio-org/texstudio/blob/master/completion/siunitx.cwl) for example file
-% To enable intellisense autocompletion/suggestion for installed packages and homemade packages in LatexWorkshop for VSCode, follow guide on [LatexWorkshopWiki](https://github.com/James-Yu/LaTeX-Workshop/wiki/Intellisense#commands-starting-with-)
+% Intellisense setup:
+% Configuration:
+	% For proper Autocompletion write .cwl file for package according to [StackExchangeCWL](https://tex.stackexchange.com/questions/534403/how-to-format-custom-cwl-for-texstudio-completion)
+		% See [CWLInformation](https://htmlpreview.github.io/?https://github.com/texstudio-org/texstudio/master/utilities/manual/usermanual_en.html#description-of-the-cwl-format) for format specification
+		% See [CWLExampleSiUnitx](https://github.com/texstudio-org/texstudio/blob/master/completion/siunitx.cwl) for example file
+% Installation:
+	% To enable intellisense autocompletion/suggestion for installed packages and homemade packages in LatexWorkshop for VSCode, follow guide on [LatexWorkshopWiki](https://github.com/James-Yu/LaTeX-Workshop/wiki/Intellisense#commands-starting-with-)
+		% Clone git Repository https://github.com/James-Yu/LaTeX-Workshop
+		% Use the script pkgcommand.py in dev folder by `python pkgcommand.py -i eekhof.cwl -o <DESTINATION>`, e. g. as `python pkgcommand.py -i ../../eekhof.cwl -o ../../` when repo was cloned into Package folder
+		% Copy the resulting JSON into new folder, e. g. `/home/lucas/texmf/cwl/`
+		% Set the setting of VS-Code to look for additional intellisense data `latex-workshop.intellisense.package.enabled` to true, and than add the destination of the JSON file (e. g. `/home/lucas/texmf/cwl/`) to the list in `latex-workshop.intellisense.package.dirs`
+
 
 
 %TODO :
@@ -186,3 +193,4 @@
 % Vernuenftige Bibtex-Zitationsweise einfügen
 % Leichtere Schreibweise für Vektoren einfuegen, damit nicht immer eine Matrix geschrieben werden muss
 % Conditional CWL hilfen fuer Kommandos einfuegen, die zum Beispiel nur in Cheatsheets auftreten (z. B. \ss etc.), siehe dazu uebergelassenes Beispiel mit Conditional in eekhof.CWL
+% Fix Gitignore name
