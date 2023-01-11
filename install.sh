@@ -1,4 +1,5 @@
 # This script is meant to run on lueelap
+## After first run, also run `texhash`-command
 
 cd ./LaTeX-Workshop/dev # Clone git repo from https://github.com/James-Yu/LaTeX-Workshop
 
