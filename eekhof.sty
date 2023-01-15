@@ -1,6 +1,6 @@
 %%% Preamble (See https://www.overleaf.com/learn/latex/Writing_your_own_package): %%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eekhof}[2023/01/03 Eekhof Package]
+\ProvidesPackage{eekhof}[2023/01/11 Eekhof Package]
 
 \RequirePackage{etoolbox} % For boolean definitions and conditionals, used in options and config
 \RequirePackage{xparse} % For bracket definitions in \ld
@@ -55,6 +55,7 @@
 \boolfalse{graybool}
 
 \DeclareOption{cheatsheet}{\booltrue{cheatsheetbool}\boolfalse{normalbool}}
+%ATTENTION: If using cheatsheet, customized font size seems to require \documentclass[8pt]{extarticle}
 \DeclareOption{gray}{\booltrue{graybool}\boolfalse{normalbool}}
 
 \ProcessOptions\relax % ATTENTION: Alway has to be called after declareoptions
@@ -81,6 +82,9 @@
 	%\renewcommand{\familydefault}{\sfdefault}
 	\usepackage[nosf]{kpfonts}
 	\usepackage[t1]{sourcesanspro} % ATTENTION: Causes errors related to mathaccents
+	%set arial font
+	\usepackage{helvet}
+	\renewcommand{\familydefault}{\sfdefault}
 	%remove spacing between headers
 	\titlespacing*{\section}{0pt}{0pt}{0pt}
 	\titlespacing*{\subsection}{0pt}{0pt}{0pt}
@@ -194,3 +198,4 @@
 % Leichtere Schreibweise für Vektoren einfuegen, damit nicht immer eine Matrix geschrieben werden muss
 % Conditional CWL hilfen fuer Kommandos einfuegen, die zum Beispiel nur in Cheatsheets auftreten (z. B. \ss etc.), siehe dazu uebergelassenes Beispiel mit Conditional in eekhof.CWL
 % Fix Gitignore name
+% Add cheatsheet-special-commands to cwl, but recommend only if cheatsheet option is chosen
