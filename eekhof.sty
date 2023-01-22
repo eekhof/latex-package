@@ -152,6 +152,19 @@
 \setenumerate[3]{label={\roman*)}}
 \setenumerate[4]{label={\Alph*)}}
 
+% More itemize layers with different symbols (using enumitem package, source: https://stackoverflow.com/questions/1935952/maximum-nesting-level-of-lists-in-latex):
+\setlistdepth{9}
+\setlist[itemize,1]{label=$\blacktriangleright$}
+\setlist[itemize,2]{label=\tiny{$\blacksquare$}}
+\setlist[itemize,3]{label=$\bullet$}
+\setlist[itemize,4]{label=$\triangleright$}
+\setlist[itemize,5]{label=$\square$}
+\setlist[itemize,6]{label=$\circ$}
+\setlist[itemize,7]{label=$>$}
+\setlist[itemize,8]{label=$\gg$}
+\setlist[itemize,9]{label=$\gggtr$}
+\renewlist{itemize}{itemize}{9}
+
 % Compact includegraphic command definition:
 \newcommand{\incfig}[2]{\begin{figure}[ht!]
 	\centering
