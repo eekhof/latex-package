@@ -152,17 +152,18 @@
 \setenumerate[3]{label={\roman*)}}
 \setenumerate[4]{label={\Alph*)}}
 
-% More itemize layers with different symbols (using enumitem package, source: https://stackoverflow.com/questions/1935952/maximum-nesting-level-of-lists-in-latex):
+% More itemize layers with different symbols (using enumitem package, source: https://stackoverflow.com/questions/1935952/maximum-nesting-level-of-lists-in-latex) (for leftmargins (to prevent negative label widths) see https://ctan.math.illinois.edu/macros/latex/contrib/enumitem/enumitem.pdf):
+\usepackage{enumitem}
 \setlistdepth{9}
 \setlist[itemize,1]{label=$\blacktriangleright$}
 \setlist[itemize,2]{label=\tiny{$\blacksquare$}}
 \setlist[itemize,3]{label=$\bullet$}
-\setlist[itemize,4]{label=$\triangleright$}
-\setlist[itemize,5]{label=$\square$}
-\setlist[itemize,6]{label=$\circ$}
-\setlist[itemize,7]{label=$>$}
-\setlist[itemize,8]{label=$\gg$}
-\setlist[itemize,9]{label=$\gggtr$}
+\setlist[itemize,4]{label=$\triangleright$,leftmargin=*}
+\setlist[itemize,5]{label=$\square$,leftmargin=*}
+\setlist[itemize,6]{label=$\circ$,leftmargin=*}
+\setlist[itemize,7]{label=$>$,leftmargin=*}
+\setlist[itemize,8]{label=$\gg$,leftmargin=*}
+\setlist[itemize,9]{label=$\gggtr$,leftmargin=*}
 \renewlist{itemize}{itemize}{9}
 
 % Compact includegraphic command definition:
