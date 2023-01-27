@@ -146,6 +146,9 @@
 \let\nablanovec\nabla % Add definition for nabla without vector so that renewing of nabla with vector works
 \renewcommand{\nabla}{{\vec{\nablanovec}}} % Add vector arrow to every nabla
 
+% Argmin command definition:
+\DeclareMathOperator*{\argmin}{argmin} %With star, so \limits works properly %TODO Braces do not yet scale properly
+
 % Enumerate symbols with brackets instead of dots:
 \setenumerate[1]{label={\arabic*)}}
 \setenumerate[2]{label={\alph*)}}
