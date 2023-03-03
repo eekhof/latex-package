@@ -5,16 +5,18 @@
 \RequirePackage{etoolbox} % For boolean definitions and conditionals, used in options and config
 \RequirePackage{xparse} % For bracket definitions in \ld
 \newbool{domaketitle}
+\newbool{langenglishbool}
+\newbool{langgermanbool}
 
 %%% Config: $$$
 \newcommand{\userfirstname}{Max}
 \newcommand{\usersurname}{Mustermann}
 \newcommand{\usernumber}{4815162}
 \booltrue{domaketitle}
+\booltrue{langenglishbool}
 
 %%% Package imports: %%%
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[english, german]{babel} % For umlauts etc.
 \RequirePackage{ftnxtra} % For footnotes in captions
 \RequirePackage[table]{xcolor} % For colored formular names etc.
 \RequirePackage{mathtools} % For underbrace stretching
@@ -58,9 +60,11 @@
 %ATTENTION: If using cheatsheet, customized font size seems to require \documentclass[8pt]{extarticle}
 \DeclareOption{gray}{\booltrue{graybool}\boolfalse{normalbool}}
 
+\DeclareOption{langgermanbool}{\booltrue{langgermanbool}\boolfalse{langenglishbool}}
+
 \ProcessOptions\relax % ATTENTION: Alway has to be called after declareoptions
 
-%%% Only for non-Cheatsheets (But alsoleft as default):
+%%% Only for non-Cheatsheets (But also left as default):
 % Um genaue Seitenzahlen bei Zitation in PDF auszublenden, aber damit sie zum nachlesen im TEX-Dokument weiter verbleiben koennen (Quelle für Umdefinition: https://tex.stackexchange.com/questions/537678/how-to-renewcommand-with-2-arguments):
 \ifbool{normalbool}{
 	\ifbool{domaketitle}{\AtBeginDocument{\maketitle}}
@@ -108,6 +112,13 @@
 {}
 
 
+%%% Language option: %%%
+\ifbool{langgermanbool}{
+	\usepackage[german]{babel} % For umlauts etc.
+}
+{\usepackage{babel}}
+
+
 %%% Only for beamer: %%%
 %TODO
 
@@ -124,6 +135,11 @@
 
 
 %%%%% Custom commands: %%%%%
+
+% Change default ref-command to autoref:
+\let\oldref\ref
+\let\ref\autoref
+
 % More compact german quote command:
 \renewcommand{\lq}{\glqq} % ATTENTION: Overwrites \lq, which is for non-german single quotes
 \renewcommand{\rq}{\grqq} % ATTENTION: Overwrites \rq, which is for non-german single quotes
