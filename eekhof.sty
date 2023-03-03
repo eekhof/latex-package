@@ -137,8 +137,7 @@
 %%%%% Custom commands: %%%%%
 
 % Change default ref-command to autoref:
-\let\oldref\ref
-\let\ref\autoref
+\AtBeginDocument{\let\plainref\ref   \let\ref\autoref} % For some reason only works after BeginDocument, see https://tex.stackexchange.com/questions/85169/why-doesnt-renewcommand-ref-autoref-change-ref-into-autoref
 
 % More compact german quote command:
 \renewcommand{\lq}{\glqq} % ATTENTION: Overwrites \lq, which is for non-german single quotes
