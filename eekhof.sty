@@ -201,7 +201,7 @@
 \AtBeginDocument{\IfFileExists{.git/HEAD}{\IfFileExists{.gitignore}{}{
 	\newwrite\outputstream
 	\immediate\openout\outputstream={GIT.gitignore}
-	\immediate\write\outputstream{*.aux^^J*.fdb_latexmk^^J*.fls^^J*.log^^J*.out^^J*.synctex.gz^^J*.toc^^J*.bbl^^J*.bcf^^J*.blg^^J*.run.xml}
+	\immediate\write\outputstream{*.aux^^J*.fdb_latexmk^^J*.fls^^J*.log^^J*.out^^J*.synctex.gz^^J*.toc^^J*.bbl^^J*.bcf^^J*.blg^^J*.run.xml^^J*.blg}
 	\immediate\closeout\outputstream
 }}{}}
 
