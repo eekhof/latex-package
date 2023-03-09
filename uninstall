@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Uninstalling Eekhof-LaTeX-Package and its autocompletion-JSON for VSCode, and deleting corresponding directories if there are no other files in them."
+
+# Remove files and directories from the back inversely, so the script fails as soon as there are other directories remaining which have not been installed by the install script, and are thus not desired to be removed
+rm $HOME/texmf/tex/latex/eekhof.sty
+rmdir $HOME/texmf/tex/latex
+rmdir $HOME/texmf/tex
+rm $HOME/texmf/cwl/eekhof.json
+rmdir $HOME/texmf/cwl
+rmdir $HOME/texmf
+
+echo "Thank you, the Eekhof-LaTeX-Package, its autocompletion-JSON for VSCode and corresponding orphaned directories have been successfully remove."
