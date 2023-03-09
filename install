@@ -1,5 +1,4 @@
-# This script is meant to run on lueelap
-## After first run, also run `texhash`-command
+#!/bin/bash
 
 cd ./LaTeX-Workshop/dev # Clone git repo from https://github.com/James-Yu/LaTeX-Workshop
 
@@ -26,13 +25,11 @@ fi
 sed -e "s/FIRSTNAMEHERE/$firstname/g" -e "s/SURNAMEHERE/$surname/g" -e "s/MATRIKELNUMMERHERE/$matrikelnummer/g" eekhof.sty > ~/texmf/tex/latex/eekhof.sty # Installs package to proper place after inserting personal parameters
 cp eekhof.json ~/texmf/cwl/eekhof.json
 
-
+# If neccessary run texhash:
 if $newinstall ; then
     echo "This seems to be the first install of this package, running texhash..."
     texhash
 else
-    echo "A version package has already been installed once, no need to run texhash."
+    echo "A version of this package seems to already have been installed once, no need to run texhash."
 fi
-echo "Thank you $firstname $surname. The Package has been successfully installed."
-
-# xdg-open ~/texmf/tex/latex/eekhof.sty # Opens installed package in preferred text editor
+echo "Thank you $firstname $surname. The Eekhof-LaTeX-Package and its autocompletion-JSON for VSCode have been successfully installed."
