@@ -18,7 +18,7 @@
 %%% Package imports: %%%
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{ftnxtra} % For footnotes in captions
-\RequirePackage[table]{xcolor} % For colored formular names etc.
+\RequirePackage{xcolor}\PassOptionsToPackage{table}{xcolor} % For colored formular names etc. ; PassOptionsToPackage in case beamer class is used, because otherwise there is error "Option clash for package xcolor", likely because beamer also loads xcolor with other options
 \RequirePackage{mathtools} % For underbrace stretching
 \usepackage{siunitx} % For \si, \num and \SI
 \let\svqty\qty % To avoid conflict with \qty from \siunitx and \physics , see https://tex.stackexchange.com/questions/628183/how-to-avoid-qty-conflict-with-physics-and-siunitx
@@ -41,7 +41,7 @@
 \RequirePackage{hyperref} % For hyperlinks, functioning table of contents, etc.
 
 %%% Further setup: %%%
-\sisetup{round-mode = places, round-precision = 3, locale = DE, scientific-notation = false, separate-uncertainty = true, per-mode=fraction}
+\sisetup{round-mode = none, round-precision = 3, locale = DE, scientific-notation = false, separate-uncertainty = true, per-mode=fraction}
 \graphicspath{{assets/}}
 \title{\jobname}
 \author{\userfirstname{} \usersurname}
@@ -120,7 +120,17 @@
 
 
 %%% Only for beamer: %%%
-%TODO
+\@ifclassloaded{beamer}{
+    \usetheme{Boadilla}
+    \beamertemplatenavigationsymbolsempty
+    \setbeamertemplate{footline}
+    {
+        \leavevmode%
+        \rightline{\usebeamertemplate{page number in head/foot}\hspace*{2ex}}
+        \vskip4pt%
+    }
+}
+{}
 
 
 %%% Math operators with self adjusting braces command \trigbraces (stolen from physics-package): %%%
@@ -145,6 +155,11 @@
 % Easier integration variable (e. g. \text{d}x -> \d x):
 \renewcommand{\d}{\text{d}} % ATTENTION: Overwrites \d , not clear what it normally does
 
+% Arrows in text mode:
+\newcommand{\follows}{\ensuremath{\Rightarrow}}
+\newcommand{\arrow}{\ensuremath{\rightarrow}}
+\renewcommand{\iff}{\ensuremath{\Leftrightarrow}}
+
 \newcommand{\const}{\text{const.}} % For compact const.
 % Prettier greek letters:
 \let\oldphi\phi \let\phi\varphi \let\varphi\oldphi
@@ -152,6 +167,8 @@
 
 \newcommand{\f}[2]{{#1}_{\left(#2\right)}} % Command for function with argument in index
 \newcommand{\bracfrac}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\bracpdv}[2]{\left(\pdv{#1}{#2}\right)}
+\newcommand{\bracdv}[2]{\left(\dv{#1}{#2}\right)}
 
 % Define more compact commands for left and right braces:
 \renewcommand{\l}{\left} % ATTENTION! Overwrites command \l for small letter L with strikethrough (e. g. polish letter)
@@ -185,11 +202,11 @@
 \renewlist{itemize}{itemize}{9}
 
 % Compact includegraphic command definition:
-\newcommand{\incfig}[2]{\begin{figure}[ht!]
+\newcommand{\incfig}[3][width = \linewidth]{\begin{figure}[ht!]
 	\centering
-	\includegraphics[width = \linewidth]{#1}
-	\caption{#2}
-	\label{fig:#1}
+	\includegraphics[#1]{#2}
+	\caption{#3}
+	\label{fig:#2}
 \end{figure}
 \FloatBarrier}
 
@@ -231,3 +248,6 @@
 % Conditional CWL hilfen fuer Kommandos einfuegen, die zum Beispiel nur in Cheatsheets auftreten (z. B. \ss etc.), siehe dazu uebergelassenes Beispiel mit Conditional in eekhof.CWL
 % Fix Gitignore name
 % Add cheatsheet-special-commands to cwl, but recommend only if cheatsheet option is chosen
+% Add spaces left and right of follows arrows
+% Disable rounding in SIUnitX
+% Add figure properties to incfig in cwl (so that path gets recommended in popup menu), and add previews for icons in cwl (Leftrightarrow etc.)
