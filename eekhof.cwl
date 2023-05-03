@@ -27,6 +27,9 @@
 \incfig{filename}{caption%text}#g # Include-graphic-like command -m # %text treats caption as text-like argument
 \clight
 \elementarycharge
+\follows
+\iff
+\arrow
 
 #\l( %| \r)#m # Only in math environments - m # Potentially use the - K for bracket-like # TODO
 #\l{ %| \r}#m # Only in math environments - m # Potentially use the - K for bracket-like # TODO

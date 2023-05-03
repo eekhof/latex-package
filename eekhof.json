@@ -38,7 +38,13 @@
       "snippet": "incfig{${1:filename}}{${2:caption}}"
     },
     "clight": {},
-    "elementarycharge": {}
+    "elementarycharge": {},
+    "follows": {},
+    "iff": {
+      "detail": "⟺",
+      "documentation": "LONG LEFT RIGHT DOUBLE ARROW"
+    },
+    "arrow": {}
   },
   "envs": {},
   "options": []
