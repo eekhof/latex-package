@@ -36,6 +36,9 @@
 \RequirePackage{multirow} % For tables from tablesgenerator
 \RequirePackage{booktabs} % For tables from tablesgenerator
 \RequirePackage{placeins} % For FloatBarrier
+\RequirePackage{endnotes} % For Endnotes
+\renewcommand{\notesname}{References} % Rename heading for endnotes, ATTENTION: Gets overwritten to "Referenzen" when langgermanbool is true
+\renewcommand{\enotesize}{\tiny} % Set font size for endnotes heading
 \RequirePackage[parfill]{parskip} % To prevent indents after linebreaks and figures
 \usepackage{enumitem} % For custom enumeration symbols
 \RequirePackage{hyperref} % For hyperlinks, functioning table of contents, etc.
@@ -114,7 +117,8 @@
 
 %%% Language option: %%%
 \ifbool{langgermanbool}{
-	\usepackage[german]{babel} % For umlauts etc.
+    \usepackage[german]{babel} % For umlauts etc.
+    \renewcommand{\notesname}{Referenzen} % Rename heading for endnotes, ATTENTION: Gets already set at import ot endnotes package
 }
 {\usepackage{babel}}
 
@@ -224,7 +228,7 @@
 \AtBeginDocument{\IfFileExists{.git/HEAD}{\IfFileExists{.gitignore}{}{
 	\newwrite\outputstream
 	\immediate\openout\outputstream={GIT.gitignore}
-	\immediate\write\outputstream{*.aux^^J*.fdb_latexmk^^J*.fls^^J*.log^^J*.out^^J*.synctex.gz^^J*.toc^^J*.bbl^^J*.bcf^^J*.blg^^J*.run.xml^^J*.blg^^J*.nav^^J*.snm}
+	\immediate\write\outputstream{*.aux^^J*.fdb_latexmk^^J*.fls^^J*.log^^J*.out^^J*.synctex.gz^^J*.toc^^J*.bbl^^J*.bcf^^J*.blg^^J*.run.xml^^J*.blg^^J*.nav^^J*.snm^^J*.ent}
 	\immediate\closeout\outputstream
 }}{}}
 
