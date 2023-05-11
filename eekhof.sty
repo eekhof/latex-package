@@ -41,7 +41,7 @@
 \RequirePackage{hyperref} % For hyperlinks, functioning table of contents, etc.
 
 %%% Further setup: %%%
-\sisetup{round-mode = none, round-precision = 3, locale = DE, scientific-notation = false, separate-uncertainty = true, per-mode=fraction}
+\sisetup{round-mode = none, round-precision = 3, locale = DE, scientific-notation = false, separate-uncertainty = true, per-mode=fraction, range-phrase={\text{~to~}}}
 \graphicspath{{assets/}}
 \title{\jobname}
 \author{\userfirstname{} \usersurname}
@@ -156,9 +156,9 @@
 \renewcommand{\d}{\text{d}} % ATTENTION: Overwrites \d , not clear what it normally does
 
 % Arrows in text mode:
-\newcommand{\follows}{\ensuremath{\Rightarrow}}
-\newcommand{\arrow}{\ensuremath{\rightarrow}}
-\renewcommand{\iff}{\ensuremath{\Leftrightarrow}}
+\newcommand{\follows}{\ensuremath{\Longrightarrow}{}}
+\newcommand{\arrow}{\ensuremath{\rightarrow}{}}
+\renewcommand{\iff}{\ensuremath{\Longleftrightarrow}{}}
 
 \newcommand{\const}{\text{const.}} % For compact const.
 % Prettier greek letters:
@@ -177,6 +177,9 @@
 % Nabla vector redefinition:
 \let\nablanovec\nabla % Add definition for nabla without vector so that renewing of nabla with vector works
 \renewcommand{\nabla}{{\vec{\nablanovec}}} % Add vector arrow to every nabla
+
+% Define Angstrom symbol command:
+\newcommand{\angstr}{\char"00C5}
 
 % Argmin command definition:
 \DeclareMathOperator*{\argmin}{argmin} %With star, so \limits works properly %TODO Braces do not yet scale properly
@@ -213,6 +216,9 @@
 % Custom SI package stuff:
 \DeclareSIUnit\clight{\text{\ensuremath{c}}}
 \DeclareSIUnit\elementarycharge{e} % Without this, there is a warning that says that elementarycharge unit is deprecated
+\DeclareSIUnit\year{yr}
+\DeclareSIUnit\ang{\char"00C5}
+\DeclareSIUnit\dex{dex}
 
 % Create gitignore if git does exist, but gitignore does not yet exist (For file check see https://tex.stackexchange.com/questions/98203/can-i-test-if-a-file-exists or https://latex.org/forum/viewtopic.php?p=5047#p5047 and for file creation see https://latex.org/forum/viewtopic.php?t=5177)
 \AtBeginDocument{\IfFileExists{.git/HEAD}{\IfFileExists{.gitignore}{}{
@@ -251,3 +257,4 @@
 % Add spaces left and right of follows arrows
 % Disable rounding in SIUnitX
 % Add figure properties to incfig in cwl (so that path gets recommended in popup menu), and add previews for icons in cwl (Leftrightarrow etc.)
+% CWL-Hilfe für \year und \angstr einfuegen
