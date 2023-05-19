@@ -209,13 +209,7 @@
 \renewlist{itemize}{itemize}{9}
 
 % Compact includegraphic command definition:
-\newcommand{\incfig}[3][width = \linewidth]{\begin{figure}[ht!]
-	\centering
-	\includegraphics[#1]{#2}
-	\caption{#3}
-	\label{fig:#2}
-\end{figure}
-\FloatBarrier}
+\newcommand{\incfig}[3][width = \linewidth]{\begin{figure}[ht!]   \centering   \includegraphics[#1]{#2}   \caption{#3}   \label{fig:#2}   \end{figure}   \FloatBarrier}
 
 % Custom SI package stuff:
 \DeclareSIUnit\clight{\text{\ensuremath{c}}}
@@ -224,6 +218,8 @@
 \DeclareSIUnit\ang{\char"00C5}
 \DeclareSIUnit\dex{dex}
 \DeclareSIUnit\pix{pix}
+\DeclareSIUnit\ev{\electronvolt}
+\DeclareSIUnit\u{u}
 
 % Create gitignore if git does exist, but gitignore does not yet exist (For file check see https://tex.stackexchange.com/questions/98203/can-i-test-if-a-file-exists or https://latex.org/forum/viewtopic.php?p=5047#p5047 and for file creation see https://latex.org/forum/viewtopic.php?t=5177)
 \AtBeginDocument{\IfFileExists{.git/HEAD}{\IfFileExists{.gitignore}{}{
@@ -318,4 +314,4 @@
 % Disable rounding in SIUnitX
 % Add figure properties to incfig in cwl (so that path gets recommended in popup menu), and add previews for icons in cwl (Leftrightarrow etc.)
 % CWL-Hilfe für \year und \angstr einfuegen
-% TODO Include 
+% Use vs-code setting "latex-workshop.hover.preview.newcommand.newcommandFile" to read in newcommand-file. Problem: This only works if file only contains newcommands, not if it contains other stuff as well. Thus create line in the installer executable that extracts all \newcommand and \renewcommand lines from the eekhof.sty, and installs it beside the eekhof.sty as eekhof_newcommands.tex in the texmf. Then use this file as newcommandFile in the vs-code settings (Add this to this script that sets vscode-settings). Use e. g. "grep -E '\\newcommand|\\renewcommand|\\Declare' eekhof.sty > eekhof_newcommands_vscode.tex" in installation script to extract newcommands from eekhof.sty (But this exact one does not work yet)
