@@ -14,6 +14,9 @@ if [ -f "$PERSONALDATAFILE" ]; then
     firstname=$(awk 'NR==1' $PERSONALDATAFILE)
     surname=$(awk 'NR==2' $PERSONALDATAFILE)
     matrikelnummer=$(awk 'NR==3' $PERSONALDATAFILE)
+    echo "Firstname: $firstname"
+    echo "Surname: $surname"
+    echo "Matrikelnummer: $matrikelnummer"
 else 
     echo "$PERSONALDATAFILE does not exist, please provide information:"
     echo What is your first name?
