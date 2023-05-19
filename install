@@ -7,12 +7,22 @@ python pkgcommand.py -i ../../eekhof.cwl -o ../../ # Generate JSON for VSCode-Co
 cd ..
 cd ..
 
-echo What is your first name?
-read firstname
-echo What is your surname?
-read surname
-echo What is your Matrikelnummer?
-read matrikelnummer
+# Check if a personal data file is given in the directory of the install script (Contains three lines: Firstname, Surname, Matrikelnummer)
+PERSONALDATAFILE=personaldata.txt
+if [ -f "$PERSONALDATAFILE" ]; then
+    echo "$PERSONALDATAFILE exists, reading data."
+    firstname=$(awk 'NR==1' $PERSONALDATAFILE)
+    surname=$(awk 'NR==2' $PERSONALDATAFILE)
+    matrikelnummer=$(awk 'NR==3' $PERSONALDATAFILE)
+else 
+    echo "$PERSONALDATAFILE does not exist, please provide information:"
+    echo What is your first name?
+    read firstname
+    echo What is your surname?
+    read surname
+    echo What is your Matrikelnummer?
+    read matrikelnummer
+fi
 
 # Test if file exists already, i. e. if texhash-command needs to be run after installation:
 if test -f "$HOME/texmf/tex/latex/eekhof.sty"; then
