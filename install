@@ -37,7 +37,7 @@ fi
 
 sed -e "s/FIRSTNAMEHERE/$firstname/g" -e "s/SURNAMEHERE/$surname/g" -e "s/MATRIKELNUMMERHERE/$matrikelnummer/g" eekhof.sty > ~/texmf/tex/latex/eekhof.sty # Installs package to proper place after inserting personal parameters
 cp eekhof.json ~/texmf/cwl/eekhof.json
-cp eekhof.bib ~/texmf/tex/eekhof.bib
+cp eekhof.bst ~/texmf/tex/eekhof.bst
 
 # If neccessary run texhash:
 if $newinstall ; then
