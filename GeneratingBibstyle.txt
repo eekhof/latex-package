@@ -1,5 +1,7 @@
 to generate Bibstyle use the custom-bib package from https://www.ctan.org/tex-archive/macros/latex/contrib/custom-bib/
 
+TODO: This is not completely done yet, for exact options chosen see `eekhof.dbj`
+
 
 - Download the archive, unzip it, and run `tex makebst.ins` and then `tex makebst.tex`
 - Answer the prompts as follows (Enter means take the default, to do that press Enter):
