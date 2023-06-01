@@ -4,7 +4,7 @@
 %%
 %% The original source files were:
 %%
-%% merlin.mbs  (with options: `babel,seq-no,nm-revf,ed-rev,jnrlst,aunm-semi,mcite,mct-6,mct-x6,nmft,nmft-sc,nmand-rm,dt-jnl,yr-com,tit-qq,qx,bt-qq,atit-u,vol-it,volp-com,jdt-pc,pp-last,num-xser,numser,ser-vol,btit-rm,bt-rm,bkpg-x,isbn,issn,doi,edpar,bkedcap,au-col,in-col,injnl,pp,xedn,amper,and-xcom,xand,etal-xc,url,url-blk,nfss,')
+%% merlin.mbs  (with options: `seq-no,nm-revf,ed-rev,jnrlst,aunm-semi,mcite,mct-6,mct-x6,nmft,nmft-sc,nmand-rm,dt-jnl,yr-com,tit-qq,qx,bt-qq,atit-u,vol-it,volp-com,jdt-pc,pp-last,num-xser,numser,ser-vol,btit-rm,bt-rm,bkpg-x,isbn,issn,doi,edpar,bkedcap,au-col,in-col,injnl,pp,xedn,amper,and-xcom,xand,etal-xc,url,url-blk,nfss,')
 %% ----------------------------------------
 %% *** A custom bibstyle by and for Lucas Eekhof ***
 %% 
@@ -23,8 +23,7 @@
  % \ProvidesFile{merlin.mbs}[2011/11/18 4.33 (PWD, AO, DPC)]
  %   For use with BibTeX version 0.99a or later
  %-------------------------------------------------------------------
- % This bibliography style file requires a file named  babelbst.tex
- %   containing the definitions of word commands like \bbleditor, etc.
+ % This bibliography style file is intended for texts in ENGLISH
  % This is a numerical citation style, and as such is standard LaTeX.
  % It requires no extra package to interface to the main text.
  % The form of the \bibitem entries is
@@ -227,87 +226,87 @@ FUNCTION {tie.or.space.prefix}
 }
 
 FUNCTION {capitalize}
-{ "\capitalize" swap$ * }
+{ "u" change.case$ "t" change.case$ }
 
 FUNCTION {space.word}
 { " " swap$ * " " * }
  % Here are the language-specific definitions for explicit words.
  % Each function has a name bbl.xxx where xxx is the English word.
- % The BABEL language selection is made here; definitions in babelbst.tex.
+ % The language selected here is ENGLISH
 FUNCTION {bbl.and}
-{ "\bbland{}"}
+{ "and"}
 
 FUNCTION {bbl.etal}
-{ "\bbletal{}"}
+{ "et~al." }
 
 FUNCTION {bbl.editors}
-{ "\bbleditors{}" }
+{ "editors" }
 
 FUNCTION {bbl.editor}
-{ "\bbleditor{}" }
+{ "editor" }
 
 FUNCTION {bbl.edby}
-{ "\bbledby{}" }
+{ "edited by" }
 
 FUNCTION {bbl.edition}
-{ "\bbledition{}" }
+{ "edition" }
 
 FUNCTION {bbl.volume}
-{ "\bblvolume{}" }
+{ "volume" }
 
 FUNCTION {bbl.of}
-{ "\bblof{}" }
+{ "of" }
 
 FUNCTION {bbl.number}
-{ "\bblnumber{}" }
+{ "number" }
 
 FUNCTION {bbl.nr}
-{ "\bblno{}" }
+{ "no." }
 
 FUNCTION {bbl.in}
-{ "\bblin{}" }
+{ "in" }
 
 FUNCTION {bbl.pages}
-{ "\bblpp{}" }
+{ "pp." }
 
 FUNCTION {bbl.page}
-{ "\bblp{}" }
+{ "p." }
 
 FUNCTION {bbl.chapter}
-{ "\bblchapter{}" }
+{ "chapter" }
 
 FUNCTION {bbl.techrep}
-{ "\bbltechreport{}" }
+{ "Technical Report" }
 
 FUNCTION {bbl.mthesis}
-{ "\bblmthesis{}" }
+{ "Master's thesis" }
 
 FUNCTION {bbl.phdthesis}
-{ "\bblphdthesis{}" }
+{ "Ph.D. thesis" }
 
-MACRO {jan} {"\bbljan{}"}
+MACRO {jan} {"January"}
 
-MACRO {feb} {"\bblfeb{}"}
+MACRO {feb} {"February"}
 
-MACRO {mar} {"\bblmar{}"}
+MACRO {mar} {"March"}
 
-MACRO {apr} {"\bblapr{}"}
+MACRO {apr} {"April"}
 
-MACRO {may} {"\bblmay{}"}
+MACRO {may} {"May"}
 
-MACRO {jun} {"\bbljun{}"}
+MACRO {jun} {"June"}
 
-MACRO {jul} {"\bbljul{}"}
+MACRO {jul} {"July"}
 
-MACRO {aug} {"\bblaug{}"}
+MACRO {aug} {"August"}
 
-MACRO {sep} {"\bblsep{}"}
+MACRO {sep} {"September"}
 
-MACRO {oct} {"\bbloct{}"}
+MACRO {oct} {"October"}
 
-MACRO {nov} {"\bblnov{}"}
+MACRO {nov} {"November"}
 
-MACRO {dec} {"\bbldec{}"}
+MACRO {dec} {"December"}
 
 MACRO {acmcs} {"ACM Computing Surveys"}
 
@@ -1355,8 +1354,6 @@ FUNCTION {begin.bib}
   write$ newline$
   "  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi"
   write$ newline$
-  "\newcommand{\Capitalize}[1]{\uppercase{#1}}" write$ newline$
-  "\newcommand{\capitalize}[1]{\expandafter\Capitalize#1}" write$ newline$
 }
 EXECUTE {begin.bib}
 EXECUTE {init.state.consts}
