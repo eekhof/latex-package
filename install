@@ -29,7 +29,7 @@ fi
 
 # Ensure necessary folders exist:
 mkdir -p ~/texmf/tex/latex/
-mkdir -p ~/texmf/bibtex/
+mkdir -p ~/texmf/bibtex/bst/
 
 # Test if file exists already, i. e. if texhash-command needs to be run after installation:
 if test -f "$HOME/texmf/tex/latex/eekhof.sty"; then
