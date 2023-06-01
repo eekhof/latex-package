@@ -1,0 +1,38 @@
+to generate Bibstyle use the custom-bib package from https://www.ctan.org/tex-archive/macros/latex/contrib/custom-bib/
+
+
+- Download the archive, unzip it, and run `tex makebst.ins` and then `tex makebst.tex`
+- Answer the prompts as follows (Enter means take the default, to do that press Enter):
+
+Do you want a description of the usage? (NO)
+-> ENTER (no)
+
+Enter the name of the MASTER file (default=merlin.mbs)
+-> ENTER (merlin.mbs)
+
+Name of the final OUTPUT .bst file? (default extension=bst)
+-> eekhof (eekhof.bst)
+
+Give a comment line to include in the style file. Something like for which journals it is applicable.
+-> A custom bibstyle by and for Lucas Eekhof (idem)
+
+Do you want verbose comments? (NO)
+-> ENTER (no)
+
+Name of language definition file (default=merlin.mbs)
+-> ENTER (merlin.mbs)
+
+Include file(s) for extra journal names? (NO)
+-> ENTER (no)
+
+<<INTERNAL LANGUAGE SUPPORT (if no external language file)
+-> ENTER (English words used explicitly)
+
+<<STYLE OF CITATIONS:
+-> ENTER ()
+
+
+-> ENTER ()
+
+
+A custom bibstyle by and for Lucas Eekhof
