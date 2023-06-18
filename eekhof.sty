@@ -233,7 +233,7 @@
 \AtBeginDocument{\IfFileExists{.git/HEAD}{\IfFileExists{.gitignore}{}{
 	\newwrite\outputstream
 	\immediate\openout\outputstream={GIT.gitignore}
-	\immediate\write\outputstream{*.aux^^J*.fdb_latexmk^^J*.fls^^J*.log^^J*.out^^J*.synctex.gz^^J*.toc^^J*.bbl^^J*.bcf^^J*.blg^^J*.run.xml^^J*.blg^^J*.nav^^J*.snm^^J*.ent}
+	\immediate\write\outputstream{*.aux^^J*.fdb_latexmk^^J*.fls^^J*.log^^J*.out^^J*.synctex.gz^^J*.toc^^J*.bbl^^J*.bcf^^J*.blg^^J*.run.xml^^J*.blg^^J*.nav^^J*.snm^^J*.ent^^J*\jobname.pdf}
 	\immediate\closeout\outputstream
 }}{}}
 
@@ -324,3 +324,4 @@
 % CWL-Hilfe für \year und \angstr einfuegen
 % Use vs-code setting "latex-workshop.hover.preview.newcommand.newcommandFile" to read in newcommand-file. Problem: This only works if file only contains newcommands, not if it contains other stuff as well. Thus create line in the installer executable that extracts all \newcommand and \renewcommand lines from the eekhof.sty, and installs it beside the eekhof.sty as eekhof_newcommands.tex in the texmf. Then use this file as newcommandFile in the vs-code settings (Add this to this script that sets vscode-settings). Use e. g. "grep -E '\\newcommand|\\renewcommand|\\Declare' eekhof.sty > eekhof_newcommands_vscode.tex" in installation script to extract newcommands from eekhof.sty (But this exact one does not work yet)
 % Create custom bibstyle, potentially with https://www.ctan.org/tex-archive/macros/latex/contrib/custom-bib/
+% Fix error when using greek symbol in e. g. \vec command, e. g. "\vec{α}"
