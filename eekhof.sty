@@ -30,6 +30,7 @@
 \usepackage{lmodern} % To counteract blurry font, see above
 \RequirePackage{tikz-cd} % For diagrams
 \RequirePackage{graphicx} % For including images
+\RequirePackage{capt-of} %For captions in non-floating images
 %\RequirePackage{biblatex} % For bibliography %ATTENTION: Causes problems where references are not found anymore
 \RequirePackage{amssymb} % For special math symbols
 \RequirePackage{amsmath} % For equation typesetting
@@ -212,8 +213,25 @@
 \setlist[itemize,9]{label=$\gggtr$,leftmargin=*}
 \renewlist{itemize}{itemize}{9}
 
-% Compact includegraphic command definition:
-\newcommand{\incfig}[3][width = \linewidth]{\begin{figure}[ht!]   \centering   \includegraphics[#1]{#2}   \caption{#3}   \label{fig:#2}   \end{figure}   \FloatBarrier}
+% Compact includegraphic command definition (Withouf firugre environment so it does not float and does work even in multicolumn environments (See https://tex.stackexchange.com/questions/75828/insert-figure-in-a-multicol-article/75843#75843)):
+\newcommand{\incfig}[3][width = \linewidth]{
+\begingroup
+\centering
+\includegraphics[#1]{#2}
+\captionof{figure}{#3}
+\label{fig:#2}
+\endgroup}
+% Analogously for table, first argument is label, second is caption, third is table content (beginning behind \begin{tabular} with e. g. {c|c|c} and ending before \end{tabular}): %TODO DOES NOT WORK YET
+\newcommand{\inctab}[3][width = \linewidth]{
+\begingroup
+\centering
+\begin{tabular}
+#3
+\end{tabular}
+\captionof{table}{#2}
+\label{tab:#1}
+\endgroup}
+
 
 % Custom SI package stuff:
 \DeclareSIUnit\clight{\text{\ensuremath{c}}}
@@ -325,3 +343,4 @@
 % Use vs-code setting "latex-workshop.hover.preview.newcommand.newcommandFile" to read in newcommand-file. Problem: This only works if file only contains newcommands, not if it contains other stuff as well. Thus create line in the installer executable that extracts all \newcommand and \renewcommand lines from the eekhof.sty, and installs it beside the eekhof.sty as eekhof_newcommands.tex in the texmf. Then use this file as newcommandFile in the vs-code settings (Add this to this script that sets vscode-settings). Use e. g. "grep -E '\\newcommand|\\renewcommand|\\Declare' eekhof.sty > eekhof_newcommands_vscode.tex" in installation script to extract newcommands from eekhof.sty (But this exact one does not work yet)
 % Create custom bibstyle, potentially with https://www.ctan.org/tex-archive/macros/latex/contrib/custom-bib/
 % Fix error when using greek symbol in e. g. \vec command, e. g. "\vec{α}"
+% Fix \inctab definition, does not work yet
