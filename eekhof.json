@@ -1,16 +1,18 @@
 {
-  "includes": [
-    "xcolor",
-    "mathtools",
-    "siunitx",
-    "physics",
-    "braket",
-    "tikz-cd",
-    "amssymb",
-    "amsmath",
-    "hyperref",
-    "xspace"
-  ],
+  "includes": {
+    "xcolor": [],
+    "mathtools": [],
+    "siunitx": [],
+    "physics": [],
+    "braket": [],
+    "tikz-cd": [],
+    "amssymb": [],
+    "amsmath": [],
+    "hyperref": [],
+    "xspace": [
+      "use-xspace"
+    ]
+  },
   "cmds": {
     "lq": {},
     "rq": {},
@@ -47,5 +49,6 @@
     "arrow": {}
   },
   "envs": {},
-  "options": []
+  "options": [],
+  "keyvals": []
 }
