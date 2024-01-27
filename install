@@ -10,7 +10,7 @@ cd ..
 cd ..
 
 # Check if a personal data file is given in the directory of the install script (Contains three lines: Firstname, Surname, Matrikelnummer)
-PERSONALDATAFILE=personaldata.txt
+PERSONALDATAFILE=./personaldata.txt
 if [ -f "$PERSONALDATAFILE" ]; then
     echo "$PERSONALDATAFILE exists, reading data."
     firstname=$(awk 'NR==1' $PERSONALDATAFILE)

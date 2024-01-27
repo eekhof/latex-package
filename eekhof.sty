@@ -65,6 +65,7 @@
 \DeclareOption{cheatsheet}{\booltrue{cheatsheetbool}\boolfalse{normalbool}}
 %ATTENTION: If using cheatsheet, customized font size seems to require \documentclass[8pt]{extarticle}
 \DeclareOption{gray}{\booltrue{graybool}\boolfalse{normalbool}}
+\DeclareOption{grey}{\booltrue{graybool}\boolfalse{normalbool}} % Other common spelling for same option
 
 \DeclareOption{langgermanbool}{\booltrue{langgermanbool}\boolfalse{langenglishbool}}
 
@@ -80,6 +81,9 @@
 	\renewcommand{\cite}[2][]{\oldcite{#2}}
 	
 	\patchcmd{\thebibliography}{\section*{\refname}}{}{}{} % Prevent numbering of bibliography
+
+    % Check if article class is used %TODO DOES NOT WORK YET
+    \@ifclassloaded{article}{}{\PackageWarning{eekhof}{Please make sure to use the intended class "article"}}
 }
 {}
 \renewcommand\@citess[1]{\textsuperscript{[#1]}} % To make citation reference numbers in superscript have square brackets around them, so as to differentiate them from e. g. exponents
@@ -108,6 +112,9 @@
 	
 	\AtBeginDocument{\begin{multicols*}{4}\begin{flushleft}}
 	\AtEndDocument{\end{flushleft}\end{multicols*}}
+
+    % Check if article class is used
+    \@ifclassloaded{extarticle}{}{\PackageWarning{eekhof}{Please make sure to use the intended class "extarticle" with the option "8pt", for the cheatsheet to optimally use space}}
 }
 {}
 
@@ -256,6 +263,10 @@
 	\immediate\closeout\outputstream
 }}{}}
 
+% Automatically make brackets in math mode scaling, see https://tex.stackexchange.com/questions/255586/replace-all-instances-of-with-cdot-only-in-mathmode and http://web.mit.edu/newtex/doc/latex/base/fntguide/node18.html:
+%\DeclareMathSymbol{(}{\mathopen}{symbols}{$\left($}
+%\DeclareMathSymbol{)}{\mathopen}{symbols}{$\right($}
+
 % Swap Greek characters to latex codes for them (Makes most sense if XModMap dead greek key is set to write greek letters quickly, see Laptop Documentation):
 % Do ensuremath? Regex replace: \\DeclareUnicodeCharacter\{(....)\}\{(\\.*)\} WITH \\DeclareUnicodeCharacter{$1}{\\ensuremath{$2}}
 % Small letters:
@@ -345,3 +356,5 @@
 % Create custom bibstyle, potentially with https://www.ctan.org/tex-archive/macros/latex/contrib/custom-bib/
 % Fix error when using greek symbol in e. g. \vec command, e. g. "\vec{α}"
 % Fix \inctab definition, does not work yet
+% Some things with greek letters, like "...\vec GREEKLETTERHERE$" , do not work yet, yields "Invalid UTF-8 byte sequence" error
+% Work in space saving measures from SS23-Astrotech-Cheatsheet (Lower line spacing, no linebreaks after \ss and \fm, \follows to \Rightarrow instead of \Longrightarrow, siunitx arcsec to ^{\prime\prime} etc.)
