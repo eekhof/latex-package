@@ -1,13 +1,14 @@
 #!/bin/bash
 
+working_dir=$(pwd)
+# For development purposes, generating the cwl:
 cd ./LaTeX-Workshop/dev # Clone git repo from https://github.com/James-Yu/LaTeX-Workshop
 
 python pkgcommand.py -i ../../eekhof.cwl -o ../../ # Generate JSON for VSCode-Completion from provided CWL-file #TODO SEEMS to output some code, could be tried to be suppressed with &>/dev/null , but try if script then still executes properly
 
 echo 'Generated JSON from CWL-file. If autocompletion in VSCode-Latex does not work for some reason, try pulling the newest version of https://github.com/James-Yu/LaTeX-Workshop as folder "LaTeX-Workshop" into the folder with the install script. If there still is a problem, try to remove ""--force"-option from LaTeX-Workshop/dev/getcwl.sh.'
 
-cd ..
-cd ..
+cd $working_dir
 
 # Check if a personal data file is given in the directory of the install script (Contains three lines: Firstname, Surname, Matrikelnummer)
 PERSONALDATAFILE=./personaldata.txt
