@@ -130,8 +130,26 @@
 
 %%% Language option: %%%
 \ifbool{langgermanbool}{
-    \usepackage[german]{babel} % For umlauts etc.
+    \usepackage[ngerman]{babel} % For umlauts etc.
     \renewcommand{\notesname}{Referenzen} % Rename heading for endnotes, ATTENTION: Gets already set at import ot endnotes package
+    \addto\extrasngerman{% Define translations for autoref terms
+        \renewcommand{\figureautorefname}{Abb.} % for figures
+        \renewcommand{\tableautorefname}{Tab.} % for tables
+        \renewcommand{\partautorefname}{Teil}
+        \renewcommand{\appendixautorefname}{Anhang}
+        \renewcommand{\equationautorefname}{Gleichung}
+        \renewcommand{\itemautorefname}{Punkt} % for items
+        \renewcommand{\chapterautorefname}{Kapitel} % for chapters
+        \renewcommand{\sectionautorefname}{Abschnitt}
+        \renewcommand{\subsectionautorefname}{Abschnitt}
+        \renewcommand{\subsubsectionautorefname}{Abschnitt}
+        \renewcommand{\paragraphautorefname}{Paragraph}
+        \renewcommand{\footnoteautorefname}{Fußnote}
+        \renewcommand{\AMSautorefname}{Gleichung}
+        \renewcommand{\theoremautorefname}{Theorem}
+        \renewcommand{\pageautorefname}{Seite}
+    }
+    }
 }
 {\usepackage{babel}}
 
